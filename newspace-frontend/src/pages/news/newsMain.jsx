@@ -1,16 +1,29 @@
 import { useEffect, useRef, useState } from "react";
 
+import user from "../../assets/profile.png";
+
 import styled from "styled-components";
 import Sidebar from "./sidebar";
 import Notice from "./notice";
 import NewsKeyword from "./keywords";
 import NewsArticle from "./article";
 
+import {
+    NewsTrack,
+    NewsGridContainer,
+    NewsCard,
+    NewsTitle,
+    NewsImage,
+    NewsContent
+
+} from "./news_s";
+
 const SidebarWidth = "130px";
 
 const PageContainer = styled.div`
     display: flex;
-    min-width: 1000px; 
+    min-width: 1500px; 
+
 `;
 
 const SidebarContainer = styled.div`
@@ -24,13 +37,25 @@ const SidebarContainer = styled.div`
 
 const NoticeContainer = styled.div`
     position: fixed;
-    top: 15px;
+    top: 15px; 
     left: 170px;
     background-color: #ffffff; 
     z-index: 1000; 
     display: flex;
-    align-items: flex-start;
-    gap: 10px; 
+    align-items: center;
+    gap: 10px;
+`;
+
+
+const UserIconContainer = styled.img`
+    position: fixed;
+    top: 15px;
+    right: 20px; 
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
 `;
 
 const ContentContainer = styled.div`
@@ -65,6 +90,31 @@ const Divider = styled.div`
 
 const NewsMain = () => {
 
+    const dummyNews = [
+        { 
+            title: "'\"내 잔고 왜 이래?\" 주식 팔아치운 개미들…증권사 '발칵'", 
+            image: "https://img.hankyung.com/photo/202502/01.39584674.1.jpg",
+            content: "메리츠증권에서 최근 합병을 거친 한 나스닥 상장사의 주식이 일부 투자자 계좌상에 30배 많은 잔고로 표기돼 실제 매도까지 체결된 사태가 발생했다." 
+        },
+        { 
+            title: "최악의 구직난… 사람인 취준생 55% \"합격만 하면 어디든 간다\"", 
+            image: "https://www.job-post.co.kr/news/photo/202502/127064_134591_4253.jpg", 
+            content: "구직난이 심화하면서 취업준비생들이 기업 형태를 가리지 않고 우선 취업부터 하려는 경향이 뚜렷해지고 있다." 
+        },
+        { 
+            title: "한국, 중국의 AI 챗봇 '딥시크' 신규 앱 다운로드 제한", 
+            image: "https://ichef.bbci.co.uk/ace/ws/800/cpsprodpb/52bd/live/a41fa3c0-ecfe-11ef-a42c-d793be61fa9c.jpg.webp", 
+            content: "한국 개인정보보호위원회는 중국의 인공지능(AI) 챗봇 '딥시크(DeepSeek)'의 국내 신규 다운로드를 제한한다고 밝혔다." 
+        },
+        { 
+            title: "한강, 노벨상 시상식 섰다…\“글 속의 인물들 결코 잊힐 수 없어\”", 
+            image: "https://flexible.img.hani.co.kr/flexible/normal/970/757/imgdb/original/2024/1211/4917338464636372.webp", 
+            content: "작가 한강을 비롯한 2024년 노벨상 수상자들을 위한 시상식이 10일(현지시각) 스웨덴 스톡홀름에서 열렸다." 
+        }
+    ];
+
+    const newsList = [...dummyNews, ...dummyNews];
+
     return (
         <PageContainer>
             <SidebarContainer>
@@ -73,12 +123,24 @@ const NewsMain = () => {
             <ContentContainer>
                 <NoticeContainer>
                 <Notice />
+                <UserIconContainer src={user} alt="user" />
                 </NoticeContainer>
                     <NewsContainer>
                         <NewsKeyword />
                         <NewsArticle />
                     </NewsContainer>
                     <Divider/>
+                    <NewsGridContainer>
+                    <NewsTrack>
+                        {newsList.map((news, index) => (
+                            <NewsCard key={index}>
+                                <NewsTitle>{news.title}</NewsTitle>
+                                <NewsImage src={news.image} alt="뉴스 이미지" />
+                                <NewsContent>{news.content}</NewsContent>
+                            </NewsCard>
+                        ))}
+                    </NewsTrack>
+                </NewsGridContainer>
             </ContentContainer>
         </PageContainer>
     );

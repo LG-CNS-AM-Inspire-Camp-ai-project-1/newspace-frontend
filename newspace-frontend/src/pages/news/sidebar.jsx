@@ -14,7 +14,7 @@ const SidebarContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 30px;
+    padding-top: 20px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000; 
 `;
@@ -22,7 +22,7 @@ const SidebarContainer = styled.div`
 const SidebarLogo = styled.img`
     width: 100px; 
     height: auto;
-    margin-bottom: 20px; 
+    margin-bottom: 10px; 
 `;
 
 const SidebarItem = styled(Link)`
