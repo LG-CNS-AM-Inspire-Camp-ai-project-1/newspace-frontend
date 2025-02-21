@@ -1,0 +1,130 @@
+/* 공통 스타일 */
+.abs-position {
+    position: absolute; /* 절대 위치 설정 */
+}
+
+.background-white {
+    background: #FFFFFF; /* 흰색 배경 적용 */
+}
+
+.background-lightblue {
+    background: #F5F5FB; /* 연한 청색 배경 적용 */
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.top-left-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px; /* 상단과 좌측에서 약간 떨어지게 패딩 추가 */
+}
+
+.login-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #F5F5FB; /* 배경색을 연회색으로 설정 */
+}
+
+
+/* 로고 이미지 스타일 */
+.login-logo img {
+    width: 150px; /* 로고 크기 */
+}
+
+/* 로그인 폼 스타일 */
+.login-form {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center; /* 중앙 정렬 추가 */
+    margin-bottom: 20px; /* 마진 추가 */
+}
+
+/* 로그인 타이틀 스타일 */
+.text-large {
+    font-family: 'Baloo 2', sans-serif; /* 글꼴 설정 */
+    font-weight: 700; /* 굵은 글씨 */
+    font-size: 36px; /* 글자 크기 조정 */
+    color: #000000; /* 검은색 텍스트 */
+    margin-bottom: 30px; /* 하단 마진 설정 */
+}
+
+/* 입력 필드 스타일 */
+.input-group {
+    margin-bottom: 10px;
+}
+
+.input-text {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc; /* 테두리 색상 */
+    border-radius: 10px; /* 모서리 둥글게 설정 */
+    background-color: #F5F5FB; /* 배경색을 연한 청색으로 설정 */
+    box-sizing: border-box; /* 패딩과 테두리 포함하여 너비 계산 */
+}
+
+.input-text:focus {
+    border-color: #66afe9; /* 포커스 시 테두리 색상 변경 */
+    outline: none; /* 기본 아웃라인 제거 */
+}
+
+
+/* 버튼 스타일 */
+#login-button,
+#signup-button {
+    width: 200px; /* 버튼의 너비 설정 */
+    height: 50px; /* 버튼의 높이 설정 */
+    border-radius: 10px; /* 버튼의 모서리 둥글게 처리 */
+    background: rgba(34, 151, 153, 0.33); /* 버튼 배경색 설정 */
+    color: rgb(0, 0, 0); /* 텍스트 색상은 흰색 */
+    font-size: 16px; /* 텍스트 크기 설정 */
+    margin-top: 20px; /* 상단 마진 설정 */
+    cursor: pointer; /* 마우스 포인터 변경 */
+}
+
+#login-button:hover,
+#signup-button:hover {
+    background-color: #2E9D9F; /* 호버 시 버튼 색 변경 */
+}
+
+/* 이미지 스타일 */
+#image402 {
+    width: 300px; /* 이미지 너비 설정 */
+    height: 150px; /* 이미지 높이 설정 */
+    background: url('path_to_image.png') no-repeat center center; /* 이미지 설정, 반복 없음, 중앙 정렬 */
+    background-size: cover; /* 배경 이미지가 컨테이너를 완전히 채우도록 조정 */
+}
+
+
+.signup-link {
+    color: #1D7F81; /* 회원가입 링크의 색상 설정 */
+    display: block;
+    margin-top: 10px;
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+.signup-link:hover,
+.signup-link:active { /* 호버 및 활성 상태에서 색상 유지 */
+    text-decoration: none;
+    color: #1D7F81; /* 호버와 클릭 상태에서도 색상 변화 없음 */
+}
+
+.divider {
+    height: 1px; /* 선의 두께 */
+    background-color: #1D7F81; /* 선의 색상 */
+    width: 90%; /* 전체 너비의 90% */
+    margin: 20px auto; /* 위 아래로 20px의 마진, 자동으로 중앙 정렬 */
+}
+
+
