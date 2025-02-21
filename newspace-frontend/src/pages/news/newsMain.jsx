@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-
-import user from "../../assets/profile.png";
-
 import styled from "styled-components";
+
+import defaultProfile from "../../assets/profile.png";
+import userImg from "../../assets/user_image.png";
+
 import Sidebar from "./sidebar";
 import Notice from "./notice";
 import NewsKeyword from "./keywords";
 import NewsArticle from "./article";
+import UserToggle from "../user/userToggle";
 
 import {
     NewsTrack,
@@ -46,6 +48,20 @@ const NoticeContainer = styled.div`
     gap: 10px;
 `;
 
+const UserInfoContainer = styled.div`
+    position: fixed;
+    top: 15px;
+    right: 80px; 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+`;
+
+const UserGreeting = styled.span`
+    font-size: 16px;
+    color: #333;
+    margin-top: 5px;
+`;
 
 const UserIconContainer = styled.img`
     position: fixed;
@@ -57,6 +73,21 @@ const UserIconContainer = styled.img`
     border-radius: 50%;
     cursor: pointer;
 `;
+
+const LoginText = styled.span`
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+`;
+
 
 const ContentContainer = styled.div`
     display: flex;
@@ -84,11 +115,30 @@ const Divider = styled.div`
     width: 1320px;
     height: 2px;
     background-color: #ddd;
-    z-index: 1000;
+    z-index: 100;
 `;
 
 
 const NewsMain = () => {
+    // 로그인 상태
+    const [isAuthorized, authorize] = useState(false); 
+
+    //임시 사용자 데이터
+    const [user, setUser] = useState({
+        name: "김철수",
+        userid: "sssjj",
+        birth: "99-01-01",
+        nickname: "어피치",
+        image: userImg
+    });
+
+    const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+    const logout = () => {
+        authorize(false);
+        setUser(null);
+        setDropdownOpen(false);
+    };
 
     const dummyNews = [
         { 
@@ -127,7 +177,26 @@ const NewsMain = () => {
             <ContentContainer>
                 <NoticeContainer>
                 <Notice />
-                <UserIconContainer src={user} alt="user" />
+                {isAuthorized ? (
+                <UserInfoContainer>
+                    <UserGreeting>
+                        안녕하세요, <strong>{user.nickname}</strong>님!
+                    </UserGreeting>
+                    <UserIconContainer 
+                        src={user.image || defaultProfile} 
+                        alt="user" 
+                        onClick={() => setDropdownOpen(!isDropdownOpen)} 
+                    />
+                    <UserToggle 
+                        isDropdownOpen={isDropdownOpen} 
+                        user={user} 
+                        profile={defaultProfile} 
+                        logout={logout} 
+                    />
+                </UserInfoContainer>
+                ) : (
+                    <LoginText onClick={() => authorize(true)}>로그인</LoginText>
+                )}
                 </NoticeContainer>
                     <NewsContainer>
                         <NewsKeyword />
@@ -144,7 +213,7 @@ const NewsMain = () => {
                             href={news.link} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            style={{ textDecoration: "none", color: "inherit" }} // ✅ 기본 스타일 유지
+                            style={{ textDecoration: "none", color: "inherit" }} 
                         >
                             <NewsCard key={index}>
                                 <NewsTitle>{news.title}</NewsTitle>
