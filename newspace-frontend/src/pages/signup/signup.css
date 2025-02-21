@@ -1,0 +1,78 @@
+/* signup.css */
+.abs-position {
+    position: absolute; /* 절대 위치 설정 */
+}
+
+.background-white {
+    background: #FFFFFF; /* 흰색 배경 적용 */
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-left-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px; /* 상단과 좌측에서 약간 떨어지게 패딩 추가 */
+}
+
+.signup-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #F5F5FB; /* 배경색을 연회색으로 설정 */
+}
+
+.signup-form {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 350px; /* 로그인 폼보다 넓게 설정 */
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.input-text {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    background-color: #F5F5FB;
+    box-sizing: border-box;
+}
+
+.input-text:focus {
+    border-color: #66afe9;
+    outline: none;
+}
+
+.signup-button {
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    background: rgba(34, 151, 153, 0.33);
+    color: white;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.signup-button:hover {
+    background-color: #2E9D9F; /* 호버 시 버튼 색 변경 */
+}
+
+.input-group label {
+    color: black; /* 라벨 글씨 색상을 검정색으로 설정 */
+}
+
