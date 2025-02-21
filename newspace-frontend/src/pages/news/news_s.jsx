@@ -8,7 +8,7 @@ const scrollLeft = keyframes`
 
 export const NewsGridContainer = styled.div`
     position: absolute;
-    top: 450px;
+    top: 440px;
     left: 170px;
     width: 1320px;
     height: 30px;
