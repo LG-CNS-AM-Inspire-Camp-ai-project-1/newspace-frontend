@@ -3,6 +3,7 @@ import NewsArticle from "./article";
 
 const SectionContainer = styled.div`
     width: 450px;
+    min-width: 450px;
     padding: 20px;
     height: 200px;
     background-color: #ffffff;

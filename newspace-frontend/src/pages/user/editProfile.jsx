@@ -13,7 +13,7 @@ const Overlay = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 3000;
 `;
 
 const ModalContainer = styled.div`
@@ -23,7 +23,7 @@ const ModalContainer = styled.div`
     padding: 30px;
     border: 2px solid #337477;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 2000;
+    z-index: 3000;
     position: relative;
 `;
 

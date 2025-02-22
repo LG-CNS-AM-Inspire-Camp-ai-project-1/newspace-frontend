@@ -7,11 +7,13 @@ const scrollLeft = keyframes`
 `;
 
 export const NewsGridContainer = styled.div`
-    position: absolute;
+    position: fixed;
     top: 440px;
-    left: 170px;
-    width: 1320px;
-    height: 30px;
+    left: 130px;
+    height: 400px;
+    width: 100%; /* 가득 차도록 설정 */
+    overflow-x: hidden; /* 내부 요소가 넘치지 않도록 설정 */
+
 `;
 
 export const NewsTrack = styled.div`

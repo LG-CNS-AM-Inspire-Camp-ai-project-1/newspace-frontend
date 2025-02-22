@@ -36,7 +36,7 @@ const NewsSummary = styled.p`
     color: #666;
     white-space: normal;
     text-overflow: ellipsis;
-    width: 400px; 
+    width: 380px; 
 `;
 
 

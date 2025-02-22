@@ -11,7 +11,7 @@ const NoticeWrapper = styled.div`
 
 const NoticeContainer = styled.div`
     width: 490px;
-    padding: 10px 15px;
+    padding: 10px 10px;
     border: 2px solid #1D7F81;
     border-radius: 8px;
     background-color: #ffffff;

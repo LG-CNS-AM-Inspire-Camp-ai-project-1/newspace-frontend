@@ -1,16 +1,33 @@
 /* signup.css */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%; /* 전체 높이를 100%로 설정 */
-    width: 100%; /* 전체 너비를 100%로 설정 */
-    background: #F5F5FB; /* 배경색 설정 */
+.top-left-logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+.signup-page {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 100vh; /* 화면 전체 높이 */
+    width: 100vw; /* 화면 전체 너비 */
+    background: #F5F5FB; /* 배경색 설정 */
+    overflow: hidden; /* 스크롤 방지 */
 }
 
-.flex-center {
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+
+.signup-flex-center {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,48 +35,34 @@ html, body {
 }
 
 
-.abs-position {
+
+.signup-abs-position {
     position: absolute; /* 절대 위치 설정 */
 }
 
-.background-white {
+.signup-background-white {
     background: #F5F5FB; /* 흰색 배경 적용 */
 }
 
-.flex-center {
+
+
+/*방금 수정한것임*/
+.signup-page {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+    background: #F5F5FB;
+    overflow: hidden;
 }
 
 
 
-
-
-/* 로고 이미지 상단 고정 */
-.top-left-logo {
-    position: fixed; /* 화면 상단에 고정 */
-    top: 0; /* 최상단에 위치 */
-    left: 0;
-    z-index: 1000; /* 다른 요소 위에 나타나도록 z-index 설정 */
+.signup-logo-image {
+    width: 150px;
 }
 
-
-
-
-
-
-/* 회원가입 카드 스타일 */
-.signup-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* 상단에서 시작 */
-    height: 100vh;
-    width: 100%;
-    position: relative; /* 상대 위치 설정 */
-    padding-top: 60px; /* 로고 높이만큼 상단 패딩 추가 */
-}
 
 
 .signup-form {
@@ -67,21 +70,18 @@ html, body {
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    width: 350px; 
+    width: 100%;
     text-align: center;
 }
 
 
 
 
-
-
-
-.input-group {
+.signup-input-group {
     margin-bottom: 10px;
 }
 
-.input-text {
+.signup-input-text {
     width: 100%;
     padding: 10px;
     border: 1px solid #cccccc;
@@ -90,7 +90,7 @@ html, body {
     box-sizing: border-box;
 }
 
-.input-text:focus {
+.signup-input-text:focus {
     border-color: #66afe9;
     outline: none;
 }
@@ -112,13 +112,14 @@ html, body {
 
 .signup-button:hover {
     background-color: #2E9D9F; /* 호버 시 버튼 색 변경 */
+    transition: background-color 1s;  /* 부드러운 색상 전환 효과 */
 }
 
-.input-group label {
+.signup-input-group label {
     color: black; /* 라벨 글씨 색상을 검정색으로 설정 */
 }
 
-.divider {
+.signup-divider {
     height: 1px; /* 선의 두께 */
     background-color: #1D7F81; /* 선의 색상 */
     width: 90%; /* 전체 너비의 90% */
@@ -131,7 +132,7 @@ html, body {
 
 
 /* 생년월일 드롭다운 스타일링 */
-.date-selectors select {
+.signup-date-selectors select {
     width: 30%; /* 드롭다운 너비 조정 */
     padding: 8px 10px; /* 패딩 조정 */
     margin-right: 5%; /* 드롭다운 간 간격 조정 */
@@ -148,16 +149,51 @@ html, body {
     background-size: 12px; /* 화살표 크기 */
 }
 
-.date-selectors select:hover {
+.signup-date-selectors select:hover {
     border-color: #66afe9; /* 호버 시 테두리 색상 변경 */
 }
 
-.date-selectors select:focus {
+.signup-date-selectors select:focus {
     border-color: #66afe9;
     outline: none;
+    
 }
 
 /* 마지막 드롭다운은 오른쪽 마진 없애기 */
-.date-selectors select:last-child {
+.signup-date-selectors select:last-child {
     margin-right: 0;
+}
+
+.flex-row {
+    display: flex;
+    align-items: center;
+}
+
+.signup-input-text {
+    flex: 1; /* 입력란을 가능한 많이 넓히기 */
+    margin-right: 10px; /* 버튼과의 간격 */
+}
+
+
+
+.signup-check-button {
+    padding: 8px 15px;
+    background-color: #4ab3b4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    outline: none;
+    transition: background-color 0.3s;  /* 부드러운 색상 전환 효과 */
+}
+
+.signup-check-button:focus,
+.signup-check-button:active {
+    outline: none;
+    border: none;
+    background-color: #4db6b8; /* 버튼 활성화 시 색상 변경 */
+}
+
+.signup-check-button.active {
+    background-color: #2aa1a3; /* 활성화 시 색상 변경 */
 }
