@@ -1,37 +1,76 @@
-/* 공통 스타일 */
-.abs-position {
-    position: absolute; /* 절대 위치 설정 */
-}
-
-.background-white {
-    background: #FFFFFF; /* 흰색 배경 적용 */
-}
-
-.background-lightblue {
-    background: #F5F5FB; /* 연한 청색 배경 적용 */
+/* signup.css */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* 전체 높이를 100%로 설정 */
+    width: 100%; /* 전체 너비를 100%로 설정 */
+    background: #F5F5FB; /* 배경색 설정 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .flex-center {
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
+    height: 100vh; /* flex container의 높이를 화면 전체 높이로 설정 */
 }
 
-.top-left-logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px; /* 상단과 좌측에서 약간 떨어지게 패딩 추가 */
+
+.abs-position {
+    position: absolute; /* 절대 위치 설정 */
 }
 
-.login-container {
-    position: absolute;
+.background-white {
+    background: #F5F5FB; /* 흰색 배경 적용 */
+}
+
+.flex-center {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+}
+
+
+
+
+
+/* 로고 이미지 상단 고정 */
+.top-left-logo {
+    position: fixed; /* 화면 상단에 고정 */
+    top: 0; /* 최상단에 위치 */
+    left: 0;
+    z-index: 1000; /* 다른 요소 위에 나타나도록 z-index 설정 */
+}
+
+
+.divider {
+    height: 1px; /* 선의 두께 */
+    background-color: #1D7F81; /* 선의 색상 */
+    width: 90%; /* 전체 너비의 90% */
+    margin: 20px auto; /* 위 아래로 20px의 마진, 자동으로 중앙 정렬 */
+}
+
+
+
+
+
+
+
+
+
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* 상단에서 시작 */
     height: 100vh;
-    background-color: #F5F5FB; /* 배경색을 연회색으로 설정 */
+    width: 100%;
+    position: relative; /* 상대 위치 설정 */
+    padding-top: 60px; /* 로고 높이만큼 상단 패딩 추가 */
+    background-color: #ffffff; /* 배경색을 연회색으로 설정 */
 }
 
 
@@ -39,6 +78,8 @@
 .login-logo img {
     width: 150px; /* 로고 크기 */
 }
+
+
 
 /* 로그인 폼 스타일 */
 .login-form {
@@ -126,5 +167,3 @@
     width: 90%; /* 전체 너비의 90% */
     margin: 20px auto; /* 위 아래로 20px의 마진, 자동으로 중앙 정렬 */
 }
-
-
