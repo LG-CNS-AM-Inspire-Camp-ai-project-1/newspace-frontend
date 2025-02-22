@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+
 import styled from "styled-components";
 
 import defaultProfile from "../../assets/profile.png";
 import userImg from "../../assets/user_image.png";
-
 import Sidebar from "./sidebar";
 import Notice from "./notice";
 import NewsKeyword from "./keywords";
@@ -20,12 +20,12 @@ import {
 
 } from "./news_s";
 
+
 const SidebarWidth = "130px";
 
 const PageContainer = styled.div`
     display: flex;
     min-width: 1500px; 
-
 `;
 
 const SidebarContainer = styled.div`
@@ -87,7 +87,6 @@ const LoginText = styled.span`
         text-decoration: underline;
     }
 `;
-
 
 const ContentContainer = styled.div`
     display: flex;
