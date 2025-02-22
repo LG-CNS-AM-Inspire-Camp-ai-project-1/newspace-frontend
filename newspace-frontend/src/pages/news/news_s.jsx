@@ -13,7 +13,6 @@ export const NewsGridContainer = styled.div`
     height: 400px;
     width: 100%; /* 가득 차도록 설정 */
     overflow-x: hidden; /* 내부 요소가 넘치지 않도록 설정 */
-
 `;
 
 export const NewsTrack = styled.div`

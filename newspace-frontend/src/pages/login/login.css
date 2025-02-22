@@ -1,5 +1,6 @@
 .login-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -18,6 +19,7 @@
 .logo-image {
     width: 150px;
 }
+
 
 .login-form {
     display: flex;
@@ -82,9 +84,11 @@
     color: #1D7F81;
 }
 
+
 .login-divider {
     height: 1px;
     background-color: #1D7F81;
     width: 90%;
     margin: 20px auto;
 }
+

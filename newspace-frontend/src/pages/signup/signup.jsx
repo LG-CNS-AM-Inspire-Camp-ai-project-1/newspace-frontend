@@ -15,6 +15,7 @@ function Signup() {
     const [isActive, setIsActive] = useState(false);
     const [isUsernameAvailable, setIsUsernameAvailable] = useState(false);
 
+
     const navigate = useNavigate();
 
     // 로고 클릭 시 메인 페이지로 이동
@@ -57,6 +58,7 @@ function Signup() {
     const years = Array.from({ length: 126 }, (_, i) => (2025 - i).toString());
     const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
     const days = Array.from({ length: 31 }, (_, i) => (i + 1).toString().padStart(2, '0'));
+
 
     return (
         <div className="signup-page">
