@@ -6,7 +6,7 @@ import Sidebar from "./sidebar";
 
 const Container = styled.div`
     position: absolute;
-    top: 100px; /* Navbar 높이 제외 */
+    top: 90px; /* Navbar 높이 제외 */
     left: 200px; /* Sidebar 너비 제외 */
     width: calc(95vw - 200px); /* 전체 너비에서 Sidebar(200px) 제외 */
     height: 800px; 
