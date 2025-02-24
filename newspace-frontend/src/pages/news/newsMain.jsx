@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import styled from "styled-components";
-
+import { useAuth } from "../../context/AuthContext";
 import defaultProfile from "../../assets/profile.png";
 import userImg from "../../assets/user_image.png";
 import Sidebar from "./sidebar";
@@ -87,6 +87,11 @@ const LoginText = styled.span`
     }
 `;
 
+const ToggleContainer = styled.div`
+    position: relative;  
+    z-index: 1100;  
+`;
+
 const ContentContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -105,6 +110,7 @@ const NewsContainer = styled.div`
     justify-content: flex-start; 
     align-items: flex-start; 
     gap: 30px; 
+    z-index: 800;
 `;
 
 const Divider = styled.div`
@@ -120,28 +126,41 @@ const Divider = styled.div`
 
 const NewsMain = () => {
     // 로그인 상태
-    const [isAuthorized, authorize] = useState(false); 
-    const navigate = useNavigate(); 
+    const { isAuthorized, user, logout } = useAuth(); 
+    const navigate = useNavigate();
+    
+    const BASE_URL = `${import.meta.env.VITE_NEWSPACE_TEST_BACKEND_URL}`.replace(/\/$/, '');
 
-    //임시 사용자 데이터
-    const [user, setUser] = useState({
-        name: "김철수",
-        userid: "sssjj",
-        birth: "99-01-01",
-        nickname: "어피치",
-        image: userImg
-    });
+    // //임시 사용자 데이터
+    // const [user, setUser] = useState({
+    //     name: "김철수",
+    //     userid: "sssjj",
+    //     birth: "99-01-01",
+    //     nickname: "어피치",
+    //     image: userImg
+    // });
 
     const [isDropdownOpen, setDropdownOpen] = useState(false);
 
+    const toggleDropdown = () => {
+        setDropdownOpen(!isDropdownOpen);
+    };    
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!event.target.closest(".user-dropdown") && !event.target.closest(".user-icon")) { 
+                setDropdownOpen(false);
+            }
+        };
+    
+        document.addEventListener("click", handleClickOutside);
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
+
     const handleLogin = () => {
         navigate('/login');
-    };
-
-    const logout = () => {
-        authorize(false);
-        setUser(null);
-        setDropdownOpen(false);
     };
 
     const dummyNews = [
@@ -173,28 +192,45 @@ const NewsMain = () => {
 
     const newsList = [...dummyNews, ...dummyNews];
 
+    console.log("🟢 현재 로그인 상태:", isAuthorized);
+    console.log("🟢 현재 사용자 정보:", user ? user : "사용자 정보 없음");
+
+    useEffect(() => {
+        const handleClick = (event) => {
+            console.log("클릭한 요소:", event.target);
+        };
+    
+        document.addEventListener("click", handleClick);
+    
+        return () => {
+            document.removeEventListener("click", handleClick);
+        };
+    }, []);
     return (
         <PageContainer>
             <Sidebar />
             <ContentContainer>
                 <NoticeContainer>
                     <Notice />
-                    {isAuthorized ? (
+                    {isAuthorized && user ? (
                         <UserInfoContainer>
                             <UserGreeting>
                                 안녕하세요, <strong>{user.nickname}</strong>님!
                             </UserGreeting>
-                            <UserIconContainer 
-                                src={user.image || defaultProfile} 
+                            <UserIconContainer
+                                className="user-icon" 
+                                src={user.profileImage ? `${BASE_URL}/api/user/profile/${user.profileImage}` : defaultProfile} 
                                 alt="user" 
-                                onClick={() => setDropdownOpen(!isDropdownOpen)} 
+                                onClick={toggleDropdown}
                             />
+                            <ToggleContainer>
                             <UserToggle 
                                 isDropdownOpen={isDropdownOpen} 
                                 user={user} 
                                 profile={defaultProfile} 
                                 logout={logout} 
                             />
+                            </ToggleContainer>
                         </UserInfoContainer>
                     ) : (
                         <LoginText onClick={handleLogin}>로그인</LoginText>  // 로그인 함수 호출로 업데이트

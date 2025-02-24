@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';  // 해당 컴포넌트 전용 CSS
+import { useAuth } from "../../context/AuthContext"; 
 import logo from '../../assets/newspace_logo1.png';
 import { loginApi } from '../../api/loginApi';  // loginApi 함수 임포트
 
@@ -8,6 +9,7 @@ function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -15,6 +17,7 @@ function Login() {
             // API를 호출하여 로그인 시도
             const loginResponse = await loginApi(username, password);
             console.log('로그인 성공:', loginResponse);
+            login(); // AuthContext를 통해 로그인 상태 업데이트
             navigate('/news/main');  // 로그인 성공 시 메인 페이지로 이동
         } catch (error) {
             // 로그인 실패 시, 에러 처리 로직

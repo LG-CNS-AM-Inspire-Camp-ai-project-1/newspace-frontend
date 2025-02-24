@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { AuthProvider } from "./context/AuthContext";
 import './App.css'
 
 import {
@@ -19,15 +20,17 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Login />} />                       {/* 로그인 페이지 */}
-          <Route path="/signup" element={<Signup />} />                     {/* 회원가입 페이지 */}
-          <Route path="/news/main" element={<NewsMain />} />                {/* 뉴스 메인 페이지 */}
-          <Route path="/news/:category" element={<NewsCategoryPage />} />   {/* 뉴스 카테고리 페이지 */}
-          <Route path="/news/:category/:id" element={<NewsDetailPage />} />   {/* 뉴스 상세 페이지 */}
-        </Routes>
-      </Router>
+      <AuthProvider> 
+        <Router>
+          <Routes>
+            <Route path="/login" element={<Login />} />                       {/* 로그인 페이지 */}
+            <Route path="/signup" element={<Signup />} />                     {/* 회원가입 페이지 */}
+            <Route path="/news/main" element={<NewsMain />} />                {/* 뉴스 메인 페이지 */}
+            <Route path="/news/:category" element={<NewsCategoryPage />} />   {/* 뉴스 카테고리 페이지 */}
+            <Route path="/news/:category/:id" element={<NewsDetailPage />} />   {/* 뉴스 상세 페이지 */}
+          </Routes>
+        </Router>
+      </AuthProvider>
     </>
   );
 }

@@ -16,7 +16,8 @@ const DropdownMenu = styled.div`
     display: ${(props) => (props.open ? "block" : "none")};
     padding: 20px;
     text-align: center;
-    z-index: 1000;
+    z-index: 1002;
+    pointer-events: auto;
 `;
 
 const DropdownItem = styled.div`
@@ -81,7 +82,7 @@ const UserToggle = ({ isDropdownOpen, user, profile, logout }) => {
 
     return (
         <>
-            <DropdownMenu open={isDropdownOpen}>
+            <DropdownMenu className="user-dropdown" open={isDropdownOpen}>
                 <ProfileImage src={user?.image || profile} alt="프로필" />
                 <UserName>{user?.name}</UserName>
                 <EditProfileButton onClick={() => setModalOpen(true)}>
